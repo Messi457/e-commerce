@@ -1,0 +1,203 @@
+<app-main-top></app-main-top>
+ 
+ <!-- Breadcrumb Start -->
+ <app-breadcrumb></app-breadcrumb>
+<!-- Breadcrumb End -->
+
+<!-- Checkout Start -->
+<div class="checkout">
+    <div class="container-fluid"> 
+        <div class="row">
+            <div class="col-lg-8">
+             <form [formGroup]="billingForm">
+                <div class="checkout-inner">
+                    <div class="billing-address">
+                        <h2>Billing Address</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>First Name</label>
+                                <input class="form-control" formControlName="firstname">
+                                <small class="error" *ngIf="freg.firstname.invalid && (freg.firstname.dirty || freg.firstname.touched)">
+                                  *Required 
+                                </small>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Last Name</label>
+                                <input class="form-control" formControlName="lastname">
+                                <small class="error" *ngIf="freg.lastname.invalid && (freg.lastname.dirty || freg.lastname.touched)">
+                                  *Required
+                                </small>
+                            </div>
+                            <div class="col-md-6">
+                                <label>E-mail / Username</label>
+                                <input class="form-control" formControlName="email">
+                                <small class="error" *ngIf="freg.email.invalid && (freg.email.dirty || freg.email.touched)">
+                                  *Required / E-mail
+                                </small>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Phone No</label>
+                                <input class="form-control" formControlName="phone">
+                                <small class="error" *ngIf="freg.phone.invalid && (freg.phone.dirty || freg.phone.touched)">
+                                  *Required / minLength 10
+                                </small>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Address</label>
+                                <input class="form-control" formControlName="address">
+                                <small class="error" *ngIf="freg.address.invalid && (freg.address.dirty || freg.address.touched)">
+                                  *Required 
+                                </small>
+                            </div>
+                            <div class="col-md-6">
+                                <label>City</label>
+                                <input class="form-control" formControlName="city">
+                                <small class="error" *ngIf="freg.city.invalid && (freg.city.dirty || freg.city.touched)">
+                                  *Required 
+                                </small>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Sub-City</label>
+                                <input class="form-control" formControlName="subcity">
+                                <small class="error" *ngIf="freg.subcity.invalid && (freg.subcity.dirty || freg.subcity.touched)">
+                                  *Required 
+                                </small>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Woreda</label>
+                                <input class="form-control" formControlName="zip">
+                                <small class="error" *ngIf="freg.zip.invalid && (freg.zip.dirty || freg.zip.touched)">
+                                  *Required 
+                                </small>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="newaccount">
+                                    <label class="custom-control-label" for="newaccount">Create an account</label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="shipto">
+                                    <label class="custom-control-label" for="shipto">Ship to different address</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              
+                    <div class="shipping-address">
+                        <h2>Shipping Address</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>First Name</label>
+                                <input class="form-control" type="text" placeholder="First Name">
+                            </div>
+                            <div class="col-md-6">
+                                <label>Last Name"</label>
+                                <input class="form-control" type="text" placeholder="Last Name">
+                            </div>
+                            <div class="col-md-6">
+                                <label>E-mail</label>
+                                <input class="form-control" type="text" placeholder="E-mail">
+                            </div>
+                            <div class="col-md-6">
+                                <label>Mobile No</label>
+                                <input class="form-control" type="text" placeholder="Mobile No">
+                            </div>
+                            <div class="col-md-12">
+                                <label>Address</label>
+                                <input class="form-control" type="text" placeholder="Address">
+                            </div>
+                            <div class="col-md-6">
+                                <label>City</label>
+                                <select class="custom-select">
+                                    <option selected>Addis Ababa</option>
+                                    <option>Hawassa</option>
+                                    <option>Mekelle</option>
+                                    <option>Gondar</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label>Sub City</label>
+                                <input class="form-control" type="text" placeholder="State">
+                            </div>
+                            <div class="col-md-6">
+                                <label>Woreda</label>
+                                <input class="form-control" type="text" placeholder="Woreda">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            </div>
+            <div class="col-lg-4">
+                <div class="checkout-inner">
+                    <div class="checkout-summary">
+                        <h1>Cart Total</h1>
+                        <p>Sub Total<span>ETB {{cart.subTotal}}</span></p>
+                        <p>Shipping Cost<span>ETB {{cart.shippingCost}}</span></p>
+                        <h2>Grand Total<span>ETB {{cart.grandTotal}}</span></h2>
+                    </div>
+
+                    <div class="checkout-payment">
+                        <div class="payment-methods">
+                            <h1>Payment Methods</h1>
+                            <div class="payment-method">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="payment-1" name="payment">
+                                    <label class="custom-control-label" for="payment-1">CBE birr</label>
+                                </div>
+                                <div class="payment-content" id="payment-1-show">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt orci ac eros volutpat maximus lacinia quis diam.
+                                    </p>
+                                </div>
+                            </div>
+                           
+                            <div class="payment-method">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="payment-3" name="payment">
+                                    <label class="custom-control-label" for="payment-3">Check Payment</label>
+                                </div>
+                                <div class="payment-content" id="payment-3-show">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt orci ac eros volutpat maximus lacinia quis diam.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="payment-method">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="payment-4" name="payment">
+                                    <label class="custom-control-label" for="payment-4">Direct Bank Transfer</label>
+                                </div>
+                                <div class="payment-content" id="payment-4-show">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt orci ac eros volutpat maximus lacinia quis diam.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="payment-method">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="payment-5" name="payment">
+                                    <label class="custom-control-label" for="payment-5">Cash on Delivery</label>
+                                </div>
+                                <div class="payment-content" id="payment-5-show">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tincidunt orci ac eros volutpat maximus lacinia quis diam.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkout-btn">
+                            <button class="btn" (click)="placeorder()" [disabled]="this.billingForm.invalid">Place Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Checkout End -->
+
+<app-main-footer></app-main-footer>
